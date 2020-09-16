@@ -2,3 +2,5 @@
 /build/
 /.eggs/
 /.idea/
+.DS_Store
+dynprogstorage/__pycache__/
