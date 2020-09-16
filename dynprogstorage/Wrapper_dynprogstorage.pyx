@@ -53,8 +53,8 @@ cdef class Pycplfunction:
     def Myprint(self):
         return self.thisptr.print_()
 
-    def __repr__(self):
-        return "<cplfunction: Breakpoints_={}, FirstBreakVal_={0}, FirstSlopeVal_={0}>".format(self.Breakpoints_,self.FirstBreakVal_, self.FirstSlopeVal_)
+ #   def __repr__(self):
+ #       return "<cplfunction: Breakpoints_={}, FirstBreakVal_={0}, FirstSlopeVal_={0}>".format(self.Breakpoints_,self.FirstBreakVal_, self.FirstSlopeVal_)
 
     property Breakpoints_:
         def __get__(self): return self.thisptr.Breakpoints_
@@ -109,14 +109,16 @@ cdef extern from "cplfunction.cpp" :
         vector[double] Evalf(vector[double])
         vector[double] OptimMargInt(vector[double],vector[double],vector[double],vector[double])
 
+
 #from cplfunctionvec cimport cplfunctionvec
 
 #https://stackoverflow.com/questions/33677231/how-to-expose-a-function-returning-a-c-object-to-python-without-copying-the-ob/33677627#33677627
 cdef extern from "<utility>":
-    vector[cplfunction]&& move(vector[cplfunction]&&) # just define for peak rather than anything else
+    vector[cplfunction]&& move(vector[cplfunction]&&) #
 
 cdef class Pycplfunctionvec:
     cdef cplfunctionvec thisptr
+
 
 #https://stackoverflow.com/questions/18260095/cant-override-init-of-class-from-cython-extension
 # Trick https://stackoverflow.com/questions/13201886/cython-and-constructors-of-classes
@@ -125,7 +127,10 @@ cdef class Pycplfunctionvec:
         if S2 is not None and B2 is not None:
             self.thisptr = cplfunctionvec(S1,S2,B1,B2,f0)
         else:
-            self.thisptr = cplfunctionvec(S1,B1,f0)
+            if S1 is not None and B1 is not None and f0 is not None:
+                self.thisptr = cplfunctionvec(S1,B1,f0)
+            else:
+                self.thisptr = cplfunctionvec()
 
     #
     # def __dealloc__(self):
@@ -144,8 +149,7 @@ cdef class Pycplfunctionvec:
 #        def __get__(self): return self.thisptr.MycplfunctionList_
 #        def __set__(self, vector[cplfunction] MycplfunctionList_): self.thisptr.MycplfunctionList_ = MycplfunctionList_
 
-# https://stackoverflow.com/questions/62828472/wrapping-a-class-that-contains-a-vector-of-complex-class-with-cython
-# impossible here
+
     def Maxf_1Breaks_withO(self,vector[double] S1, vector[double] B1, vector[double] f0):
         self.thisptr.Maxf_1Breaks_withO( S1,  B1, f0)
 
@@ -164,14 +168,22 @@ cdef class Pycplfunctionvec:
     def EvalDeltafPlus(self,vector[double] x):
         return(self.thisptr.EvalDeltafPlus(x))
 
-
-
-   # def Max_(self, Pycplfunctionvec x, Pycplfunctionvec y):
-   #     self.thisptr.Max_(x.thisptr,y.thisptr)
+    def Max_(self, Pycplfunctionvec y):
+        cdef Pycplfunctionvec Pyresvec
+        Pyresvec = Pycplfunctionvec()
+        Pyresvec.thisptr.Max_(self.thisptr,y.thisptr)
+        return(Pyresvec)
 
     #def
- #   def vec_get(self,i):
- #       cdef Pycplfunction Pyres
- #       Pyres = Pycplfunction()
- #       Pyres.copy(self.thisptr.vec_get(i))
- #       return(Pyres)
+    def vec_get(self,i):
+        cdef Pycplfunction Pyres
+        Pyres = Pycplfunction([0.],[0.],0.)
+        Pyres.copy(self.thisptr.vec_get(i))
+        return(Pyres)
+
+    def MaxPycplfunctionvec(Pycplfunctionvec x, Pycplfunctionvec y):
+        cdef Pycplfunctionvec Pyresvec
+        Pyresvec = Pycplfunctionvec()
+        Pyresvec.thisptr.Max_(x.thisptr,y.thisptr)
+        return Pyresvec
+

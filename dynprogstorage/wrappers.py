@@ -58,3 +58,4 @@ def GenCostFunctionFromMarketPrices_dict(Prices,r_in=1,r_out=1,valueAtZero=0):
         Res= {"S1" : Prices_in.tolist(),"B1" : [-math.inf]*n, "f0" : valueAtZero.tolist(), "S2" : Prices_out.tolist(),"B2" : [0]*n}
 
     return Res;
+

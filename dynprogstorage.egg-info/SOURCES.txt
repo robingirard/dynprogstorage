@@ -1,4 +1,4 @@
-README.rst
+README.md
 setup.py
 dynprogstorage/Wrapper_dynprogstorage.cpp
 dynprogstorage.egg-info/PKG-INFO
