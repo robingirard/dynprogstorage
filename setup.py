@@ -29,7 +29,7 @@ dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
 setup(
     cmdclass={'build_ext': build_ext},
     name='dynprogstorage',
-    version='0.1.1',
+    version='0.1.4',
     ext_modules=cythonize([dynprogstorage_ext]),
     #long_description=readme,
     #long_description_content_type='text/markdown',
