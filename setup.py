@@ -35,7 +35,7 @@ setup(
     #long_description_content_type='text/markdown',
     author='Robin Girard',
     author_email='robin.girard@mines-paristech.fr',license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages()
 )
 
 
