@@ -15,11 +15,17 @@ from Cython.Distutils import build_ext
 dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
     sources=['dynprogstorage/Wrapper_dynprogstorage.pyx'],
     #libraries=['boost_python38'],
-    extra_compile_args=['-std=c++11']
+    #extra_compile_args=['-std=c++11']
 )
 
-
+#set INCLUDE=C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt
+#set INCLUDE=C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\shared;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\amd64;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64
+#set LIB=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\amd64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\um\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\ucrt\x64;
 #libboost_python38.dylib
+#C:\Users\robin.girard\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\robin.girard\AppData\Local\Programs\Python\Python38-32\;%PyCharm%;C:\Program Files (x86)\Windows Kits\10\Include
+#set INCLUDE=C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;C:\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\onecore\x64;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\amd64;C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64
+
+#set LIB=C:\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\lib\onecore\x64;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\lib\amd64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\ucrt\x64
 setup(
     cmdclass={'build_ext': build_ext},
     name='dynprogstorage',

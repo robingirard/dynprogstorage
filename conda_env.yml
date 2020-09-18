@@ -1,6 +1,6 @@
 name : dynprogstorage
 dependencies :
-    - python=3.7
+    - python=3.8
     - numpy
     - cython
     - pytest
