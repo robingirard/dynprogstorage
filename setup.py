@@ -13,7 +13,9 @@ from Cython.Distutils import build_ext
 
 
 dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
-    sources=['dynprogstorage/Wrapper_dynprogstorage.pyx'],
+    sources=['dynprogstorage/Wrapper_dynprogstorage.pyx',
+             'dynprogstorage/cplfunction.hpp',
+             'dynprogstorage/cplfunction.cpp'],
     #libraries=['boost_python38'],
     extra_compile_args=['-std=c++11']
 )
