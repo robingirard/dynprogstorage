@@ -3,6 +3,8 @@ setup.py
 dynprogstorage/Wrapper_dynprogstorage.cpp
 dynprogstorage/Wrapper_dynprogstorage.pyx
 dynprogstorage/__init__.py
+dynprogstorage/cplfunction.cpp
+dynprogstorage/cplfunction.hpp
 dynprogstorage/wrappers.py
 dynprogstorage.egg-info/PKG-INFO
 dynprogstorage.egg-info/SOURCES.txt

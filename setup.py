@@ -11,11 +11,24 @@ from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
 
+indlude_dirs=['C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\ucrt',
+              'C:\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.27.29110\\include',
+              'C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\shared',
+              'C:\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.27.29110\\lib\\onecore\\x64',
+              'C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\lib\\amd64',
+              'C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.18362.0\\x64']
 
 dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
     sources=['dynprogstorage/Wrapper_dynprogstorage.pyx',
+            'dynprogstorage/Wrapper_dynprogstorage.cpp',
              'dynprogstorage/cplfunction.hpp',
              'dynprogstorage/cplfunction.cpp'],
+
+    include_dirs=indlude_dirs,  # put include paths here
+    library_dirs=['C:\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.27.29110\\lib\\onecore\\x64',
+                  'C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\lib\\amd64',
+                  'C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64',
+                  'C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\ucrt\\x64'],  # usually need your Windows SDK stuff here
     #libraries=['boost_python38'],
     extra_compile_args=['-std=c++11']
 )
@@ -25,12 +38,13 @@ dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
 setup(
     cmdclass={'build_ext': build_ext},
     name='dynprogstorage',
-    version='0.1.5',
+    version='0.1.6',
     ext_modules=cythonize([dynprogstorage_ext]),
     #long_description=readme,
     #long_description_content_type='text/markdown',
     author='Robin Girard',
     author_email='robin.girard@mines-paristech.fr',license=license,
+    include_dirs = indlude_dirs,
     packages=find_packages()
 )
 
