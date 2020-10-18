@@ -25,10 +25,10 @@ dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
              'dynprogstorage/cplfunction.cpp'],
 
     include_dirs=indlude_dirs,  # put include paths here
-    library_dirs=['C:\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.27.29110\\lib\\onecore\\x64',
-                  'C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\lib\\amd64',
-                  'C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64',
-                  'C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\ucrt\\x64'],  # usually need your Windows SDK stuff here
+    #library_dirs=['C:\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.27.29110\\lib\\onecore\\x64',
+    #              'C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\lib\\amd64',
+    #              'C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64',
+    #              'C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\ucrt\\x64'],  # usually need your Windows SDK stuff here
     #libraries=['boost_python38'],
     extra_compile_args=['-std=c++11']
 )
@@ -38,7 +38,7 @@ dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
 setup(
     cmdclass={'build_ext': build_ext},
     name='dynprogstorage',
-    version='0.1.6',
+    version='0.1.7',
     ext_modules=cythonize([dynprogstorage_ext]),
     #long_description=readme,
     #long_description_content_type='text/markdown',
