@@ -22,9 +22,9 @@ indlude_dirs=['C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\
 
 dynprogstorage_ext = Extension('dynprogstorage.Wrapper_dynprogstorage',
     sources=['dynprogstorage/Wrapper_dynprogstorage.pyx',
-            #'dynprogstorage/Wrapper_dynprogstorage.cpp',
-            #'dynprogstorage/cplfunction.cpp'
-             # 'dynprogstorage/cplfunction.hpp'
+            'dynprogstorage/Wrapper_dynprogstorage.cpp',
+            'dynprogstorage/cplfunction.cpp',
+            'dynprogstorage/cplfunction.hpp',
              ],
 
     include_dirs=indlude_dirs,  # put include paths here
@@ -49,7 +49,7 @@ setup(
     cmdclass={'build_ext': build_ext},
     setup_args={'script_args': ["--compiler=msvc"]},
     name='dynprogstorage',
-    version='0.1.7',
+    version='0.1.8',
     ext_modules=cythonize([dynprogstorage_ext]),
     #long_description=readme,
     #long_description_content_type='text/markdown',
