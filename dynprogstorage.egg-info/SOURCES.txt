@@ -1,5 +1,12 @@
 README.md
+setup.cfg
 setup.py
+./dynprogstorage/__init__.py
+./dynprogstorage/wrappers.py
+./dynprogstorage/tests/__init__.py
+./dynprogstorage/tests/test_current.py
+./dynprogstorage/tests/test_pycpl_function.py
+./dynprogstorage/tests/test_wrapper.py
 dynprogstorage/Wrapper_dynprogstorage.cpp
 dynprogstorage/Wrapper_dynprogstorage.pyx
 dynprogstorage/__init__.py
@@ -9,6 +16,7 @@ dynprogstorage/wrappers.py
 dynprogstorage.egg-info/PKG-INFO
 dynprogstorage.egg-info/SOURCES.txt
 dynprogstorage.egg-info/dependency_links.txt
+dynprogstorage.egg-info/not-zip-safe
 dynprogstorage.egg-info/top_level.txt
 dynprogstorage/tests/__init__.py
 dynprogstorage/tests/test_current.py
