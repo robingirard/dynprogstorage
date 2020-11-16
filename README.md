@@ -2,7 +2,7 @@ Dynamic programming optimisation tool
 =======================================
 
 This project implements the dynamic programming tool proposed in
-[this paper](https://hal-mines-paristech.archives-ouvertes.fr/hal-01110689) and
+[this paper](https://hal-mines-paristech.archives-ouvertes.fr/hal-01110689) (published [here](https://ieeexplore.ieee.org/document/6863551/))and
 available in the R Software in [the ConConPiWiFun package](https://cran.r-project.org/web/packages/ConConPiWiFun/index.html)
 ---------------
 
